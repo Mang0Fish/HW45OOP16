@@ -55,8 +55,8 @@ def print_100_1():
         print(i)
 
 
-thread1 = threading.Thread(target=print_1_100())
-thread2 = threading.Thread(target=print_100_1())
+thread1 = threading.Thread(target=print_1_100)  #fixed
+thread2 = threading.Thread(target=print_100_1)  #fixed
 
 thread1.start()
 thread2.start()
@@ -65,14 +65,18 @@ print("---------------------------------")
 #3
 import multiprocessing
 
-process1 = multiprocessing.Process(target=print_1_100())
-process2 = multiprocessing.Process(target=print_100_1())
+
 
 
 if __name__ == "__main__":
+    process1 = multiprocessing.Process(target=print_1_100)  # fixed
+    process2 = multiprocessing.Process(target=print_100_1)  # fixed
+
     process1.start()
     process2.start()
 
+    process1.join()  #fixed
+    process2.join()  #fixed
 
 #4
 
@@ -85,7 +89,7 @@ capitals = [
 with lock:
     for city in capitals[:5]:
             print(f"- {city}")
-        
+
 
 # I haven't copied everything so it won't be messy and cramped
 
